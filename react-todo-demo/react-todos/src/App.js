@@ -7,6 +7,7 @@ function App() {
     {rowNumber: 1, rowDescription: 'Feed puppy', rowAssigned: 'User One'},
     {rowNumber: 2, rowDescription: 'Water plants', rowAssigned: 'User Two'},
     {rowNumber: 3, rowDescription: 'Make dinner', rowAssigned: 'User One'},
+    {rowNumber: 4, rowDescription: 'Charge phone battery', rowAssigned: 'User One'},
   ];
 
   return (
