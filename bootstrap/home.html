@@ -12,13 +12,20 @@
   </head>
   <body>
     <div class="container mt-3">
-      <button class="btn btn-primary" type="button" data-bs-toggle="collapse"
-          data-bs-target="#collapseExample">
-        Click here
-      </button>
-
-      <div class="collapse" id="collapseExample">
-          Hide comments until button is pressed
+      <div class="accordion">
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button" type="button"
+                data-bs-toggle="collapse" data-bs-target="#collapseOne">
+              Learn more here
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent=".accordion">
+            <div class="accordion-body">
+              Here is what you can learn!
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
