@@ -1,11 +1,10 @@
 import './App.css'
+import { Navbar } from './layouts/NavbarAndFooter/Navbar';
 
 function App() {
   return (
-    <>
-      <h1>Welcome to the fullstack course :-)</h1>
-    </>
-  )
+    <Navbar />
+  );
 }
 
 export default App
