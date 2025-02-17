@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { BookModel } from "../../models/BookModel";
+import BookModel from "../../models/BookModel";
 import { SpinnerLoading } from "../Utils/SprinnerLoading";
 import { SearchBook } from "./components/SearchBook";
 
