@@ -56,7 +56,7 @@ export const SearchBooksPage = () => {
       setIsLoading(false);
       setHttpError(error.message);
     });
-  }, []);
+  }, [currentPage, booksPerPage]);
 
   if (isLoading) {
     return <SpinnerLoading />;
