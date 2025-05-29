@@ -81,5 +81,27 @@ export const ReviewListPage = () => {
 
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
-  return ();
+  return (
+    <div className="container mt-5">
+      <div>
+        <h3>Comments: ({reviews.length})</h3>
+      </div>
+      <p>
+        {indexOfFirstReview + 1} to {lastItem} of {totalAmountOfReviews} items:
+      </p>
+      <div className="row">
+        {reviews.map((review) => (
+          <Review review={review} key={review.id} />
+        ))}
+      </div>
+
+      {totalPages > 1 && (
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          paginate={paginate}
+        />
+      )}
+    </div>
+  );
 };
