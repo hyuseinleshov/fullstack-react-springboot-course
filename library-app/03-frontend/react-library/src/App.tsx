@@ -55,7 +55,10 @@ export const App = () => {
               render={() => <LoginWidget config={oktaConfig} />}
             />
             <Route path="/login/callback" component={LoginCallback} />
-            <SecureRoute path='/shelf'> <ShelfPage /> </SecureRoute>
+            <SecureRoute path="/shelf">
+              {" "}
+              <ShelfPage />{" "}
+            </SecureRoute>
           </Switch>
         </div>
         <Footer />
