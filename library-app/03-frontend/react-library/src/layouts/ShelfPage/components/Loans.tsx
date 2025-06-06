@@ -4,6 +4,7 @@ import ShelfCurrentLoans from "../../../models/ShelfCurrentLoans";
 import { SpinnerLoading } from "../../Utils/SpinnerLoading";
 import defaultBookImage from "../../../Images/BooksImages/book-luv2code-1000.png";
 import { Link } from "react-router-dom";
+import { LoansModal } from "./LoansModal";
 
 export const Loans = () => {
   const { authState } = useOktaAuth();
@@ -131,6 +132,7 @@ export const Loans = () => {
                   </div>
                 </div>
                 <hr />
+                <LoansModal shelfCurrentLoan={shelfCurrentLoan} mobile={false} />
               </div>
             ))}
           </>
@@ -215,8 +217,8 @@ export const Loans = () => {
                     </Link>
                   </div>
                 </div>
-
                 <hr />
+                <LoansModal shelfCurrentLoan={shelfCurrentLoan} mobile={true} />
               </div>
             ))}
           </>
