@@ -1,3 +1,4 @@
+import { eventNames } from "process";
 import ShelfCurrentLoans from "../../../models/ShelfCurrentLoans";
 import defaultBookImage from "./../../../Images/BooksImages/book-luv2code-1000.png";
 
@@ -5,6 +6,7 @@ export const LoansModal: React.FC<{
   shelfCurrentLoan: ShelfCurrentLoans;
   mobile: boolean;
   returnBook: any;
+  renewLoan: any;
 }> = (props) => {
   return (
     <div
@@ -82,7 +84,12 @@ export const LoansModal: React.FC<{
                   >
                     Return Book
                   </button>
-                  <button
+                  <button onClick = {
+                    props.shelfCurrentLoan.daysLeft < 0 ?
+                    (event) => event.preventDefault()
+                    :
+                    () => props.renewLoan(props.shelfCurrentLoan.book.id)
+                  }
                     data-bs-dismiss="modal"
                     className={
                       props.shelfCurrentLoan.daysLeft < 0

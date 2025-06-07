@@ -119,7 +119,7 @@ public class BookService {
         Date d1 = sdFormat.parse(validateCheckout.getReturnDate());
         Date d2 = sdFormat.parse(LocalDate.now().toString());
 
-        if (d1.compareTo(d2) < 0 || d1.compareTo(d2) == 0) {
+        if (d1.compareTo(d2) > 0 || d1.compareTo(d2) == 0) {
             validateCheckout.setReturnDate(LocalDate.now().plusDays(7).toString());
             checkoutRepository.save(validateCheckout);
         }
