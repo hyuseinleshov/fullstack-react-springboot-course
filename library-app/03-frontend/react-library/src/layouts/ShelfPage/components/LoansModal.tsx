@@ -4,6 +4,7 @@ import defaultBookImage from "./../../../Images/BooksImages/book-luv2code-1000.p
 export const LoansModal: React.FC<{
   shelfCurrentLoan: ShelfCurrentLoans;
   mobile: boolean;
+  returnBook: any;
 }> = (props) => {
   return (
     <div
@@ -74,6 +75,7 @@ export const LoansModal: React.FC<{
                 )}
                 <div className="list-group mt-3">
                   <button
+                    onClick={() => props.returnBook(props.shelfCurrentLoan.book.id)}
                     data-bs-dismiss="modal"
                     className="list-group-item list-group-item-action"
                     aria-current="true"
