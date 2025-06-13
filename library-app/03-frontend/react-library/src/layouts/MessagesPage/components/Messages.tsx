@@ -17,7 +17,28 @@ export const Messages = () => {
   const [totalPages, setTotalPages] = useState(0);
 
   useEffect(() => {
-    const fetchUserMessages = async () => {};
+    const fetchUserMessages = async () => {
+      if (authState && authState?.isAuthenticated) {
+        const url = `http://localhost:8080/api/messages/search/findByUserEmail/?userEmail=${
+          authState?.accessToken?.claims.sub
+        }&page=${currentPage - 1}&size=${messagesPerPage}`;
+        const requestOptions = {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${authState?.accessToken?.accessToken}`,
+            "Content-Type": "application/json",
+          },
+        };
+        const messagesResponse = await fetch(url, requestOptions);
+        if (!messagesResponse.ok) {
+          throw new Error("Something went wrong!");
+        }
+        const messagesResponseJson = await messagesResponse.json();
+        setMessages(messagesResponseJson._embedded.messages);
+        setTotalPages(messagesResponseJson.page.totalPages);
+      }
+      setIsLoadingMessages(false);
+    };
     fetchUserMessages().catch((error: any) => {
       setIsLoadingMessages(false);
       setHttpError(error.messages);
