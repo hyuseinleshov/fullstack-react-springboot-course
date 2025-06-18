@@ -56,5 +56,5 @@ public class AddBookRequest {
     public void setImg(String img) {
         this.img = img;
     }
-    
+
 }
