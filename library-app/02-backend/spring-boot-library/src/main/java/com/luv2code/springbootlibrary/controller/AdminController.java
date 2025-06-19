@@ -6,7 +6,7 @@ import com.luv2code.springbootlibrary.utils.ExtractJWT;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin("http://localhost:5173")
 @RestController
 @RequestMapping("/api/admin")
 public class AdminController {
@@ -20,7 +20,7 @@ public class AdminController {
 
     @PostMapping("/secure/add/book")
     public void postBook(@RequestHeader(value = "Authorization") String token,
-                         @RequestHeader AddBookRequest addBookRequest) throws Exception {
+                         @RequestBody AddBookRequest addBookRequest) throws Exception {
         String admin = ExtractJWT.payloadJWTExtraction(token, "\"userType\"");
 
         if (admin == null || !admin.equals("admin")) {
