@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { AdminMessages } from "./components/AdminMessages";
 import { AddNewBook } from "./components/AddNewBook";
+import { ChangeQuantityOfBooks } from "./components/ChangeQuantityOfBooks";
 
 export const ManageLibraryPage = () => {
   const { authState } = useOktaAuth();
@@ -60,7 +61,7 @@ export const ManageLibraryPage = () => {
               aria-controls="nav-quantity"
               aria-selected="true"
             >
-              Change quantity
+              <ChangeQuantityOfBooks />
             </button>
             <button
               onClick={messagesClickFunction}
