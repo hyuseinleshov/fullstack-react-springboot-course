@@ -3,10 +3,9 @@ package com.luv2code.springbootlibrary.controller;
 import com.luv2code.springbootlibrary.requestmodels.ReviewRequest;
 import com.luv2code.springbootlibrary.service.ReviewService;
 import com.luv2code.springbootlibrary.utils.ExtractJWT;
-import org.aspectj.lang.annotation.RequiredTypes;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin("http://localhost:5173")
+@CrossOrigin("https://localhost:5173")
 @RestController
 @RequestMapping("/api/reviews")
 public class ReviewController {
