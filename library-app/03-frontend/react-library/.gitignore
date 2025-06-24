@@ -29,5 +29,6 @@ dist-ssr
 .env.development
 .env.production
 
-# Ignore SSL private keys
-library-app/03-frontend/react-library/ssl-localhost/*.key
+# Ignore local SSL artifacts
+ssl-localhost/*.key
+ssl-localhost/*.crt
