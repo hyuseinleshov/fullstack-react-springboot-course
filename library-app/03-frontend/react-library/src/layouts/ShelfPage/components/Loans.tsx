@@ -20,7 +20,7 @@ export const Loans = () => {
   useEffect(() => {
     const fetchUserCurrentLoans = async () => {
       if (authState && authState.isAuthenticated) {
-        const url = `http://localhost:8080/api/books/secure/currentloans`;
+        const url = `${import.meta.env.VITE_API}/books/secure/currentloans`;
         const requestOptions = {
           method: "GET",
           headers: {
@@ -58,13 +58,15 @@ export const Loans = () => {
   }
 
   async function returnBook(bookId: number) {
-    const url = `http://localhost:8080/api/books/secure/return?bookId=${bookId}`;
+    const url = `${
+      import.meta.env.VITE_API
+    }/books/secure/return?bookId=${bookId}`;
     const requestOptions = {
       method: "PUT",
       headers: {
         Authorization: `Bearer ${authState?.accessToken?.accessToken}`,
-        "Content-Type": "application/json"
-      }
+        "Content-Type": "application/json",
+      },
     };
     const returnResponse = await fetch(url, requestOptions);
     if (!returnResponse.ok) {
@@ -74,13 +76,15 @@ export const Loans = () => {
   }
 
   async function renewLoan(bookId: number) {
-    const url = `http://localhost:8080/api/books/secure/renew/loan?bookId=${bookId}`;
+    const url = `${
+      import.meta.env.VITE_API
+    }/books/secure/renew/loan?bookId=${bookId}`;
     const requestOptions = {
       method: "PUT",
       headers: {
         Authorization: `Bearer ${authState?.accessToken?.accessToken}`,
-        "Content-Type": "application/json"
-      }
+        "Content-Type": "application/json",
+      },
     };
 
     const returnResponse = await fetch(url, requestOptions);
@@ -166,7 +170,12 @@ export const Loans = () => {
                   </div>
                 </div>
                 <hr />
-                <LoansModal shelfCurrentLoan={shelfCurrentLoan} mobile={false} returnBook={returnBook} renewLoan={renewLoan} />
+                <LoansModal
+                  shelfCurrentLoan={shelfCurrentLoan}
+                  mobile={false}
+                  returnBook={returnBook}
+                  renewLoan={renewLoan}
+                />
               </div>
             ))}
           </>
@@ -252,7 +261,12 @@ export const Loans = () => {
                   </div>
                 </div>
                 <hr />
-                <LoansModal shelfCurrentLoan={shelfCurrentLoan} mobile={true} returnBook={returnBook} renewLoan={renewLoan} />
+                <LoansModal
+                  shelfCurrentLoan={shelfCurrentLoan}
+                  mobile={true}
+                  returnBook={returnBook}
+                  renewLoan={renewLoan}
+                />
               </div>
             ))}
           </>

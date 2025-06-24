@@ -18,7 +18,7 @@ export const SearchBooksPage = () => {
 
   useEffect(() => {
     const fetchBooks = async () => {
-      const baseUrl: string = "http://localhost:8080/api/books";
+      const baseUrl: string = `${import.meta.env.VITE_API}/books`;
 
       let url: string = "";
 
