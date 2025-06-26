@@ -8,24 +8,8 @@ import { ChangeQuantityOfBooks } from "./components/ChangeQuantityOfBooks";
 export const ManageLibraryPage = () => {
   const { authState } = useOktaAuth();
 
-  const [changeQuantityOfBooksClick, setChangeQuantityOfBooksClick] =
-    useState(false);
-  const [messagesClick, setMessagesClick] = useState(false);
-
-  function addbookClickFunction() {
-    setChangeQuantityOfBooksClick(false);
-    setMessagesClick(false);
-  }
-
-  function changeQuantityOfBooksClickFunction() {
-    setChangeQuantityOfBooksClick(true);
-    setMessagesClick(false);
-  }
-
-  function messagesClickFunction() {
-    setChangeQuantityOfBooksClick(false);
-    setMessagesClick(true);
-  }
+  // Use a single state variable for the active tab
+  const [activeTab, setActiveTab] = useState("add");
 
   if (authState?.accessToken?.claims.userType === undefined) {
     return <Redirect to="/home" />;
@@ -38,41 +22,41 @@ export const ManageLibraryPage = () => {
         <nav>
           <div className="nav nav-tabs" id="nav-tab" role="tablist">
             <button
-              onClick={addbookClickFunction}
-              className="nav-link active"
+              onClick={() => setActiveTab("add")}
+              className={`nav-link${activeTab === "add" ? " active" : ""}`}
               id="nav-add-book-tab"
               data-bs-toggle="tab"
               data-bs-target="#nav-add-book"
               type="button"
               role="tab"
               aria-controls="nav-add-book"
-              aria-selected="false"
+              aria-selected={activeTab === "add"}
             >
               Add new book
             </button>
             <button
-              onClick={changeQuantityOfBooksClickFunction}
-              className="nav-link"
+              onClick={() => setActiveTab("quantity")}
+              className={`nav-link${activeTab === "quantity" ? " active" : ""}`}
               id="nav-quantity-tab"
               data-bs-toggle="tab"
               data-bs-target="#nav-quantity"
               type="button"
               role="tab"
               aria-controls="nav-quantity"
-              aria-selected="true"
+              aria-selected={activeTab === "quantity"}
             >
-              <ChangeQuantityOfBooks />
+              Change Quantity
             </button>
             <button
-              onClick={messagesClickFunction}
-              className="nav-link"
+              onClick={() => setActiveTab("messages")}
+              className={`nav-link${activeTab === "messages" ? " active" : ""}`}
               id="nav-messages-tab"
               data-bs-toggle="tab"
               data-bs-target="#nav-messages"
               type="button"
               role="tab"
               aria-controls="nav-messages"
-              aria-selected="false"
+              aria-selected={activeTab === "messages"}
             >
               Messages
             </button>
@@ -80,28 +64,28 @@ export const ManageLibraryPage = () => {
         </nav>
         <div className="tab-content" id="nav-tabContent">
           <div
-            className="tab-pane fade show active"
+            className={`tab-pane fade${activeTab === "add" ? " show active" : ""}`}
             id="nav-add-book"
             role="tabpanel"
             aria-labelledby="nav-add-book-tab"
           >
-            <AddNewBook />
+            {activeTab === "add" && <AddNewBook />}
           </div>
           <div
-            className="tab-pane fade"
+            className={`tab-pane fade${activeTab === "quantity" ? " show active" : ""}`}
             id="nav-quantity"
             role="tabpanel"
             aria-labelledby="nav-quantity-tab"
           >
-            {changeQuantityOfBooksClick ? <>Change Quantity</> : <></>}
+            {activeTab === "quantity" && <ChangeQuantityOfBooks />}
           </div>
           <div
-            className="tab-pane fade"
+            className={`tab-pane fade${activeTab === "messages" ? " show active" : ""}`}
             id="nav-messages"
             role="tabpanel"
             aria-labelledby="nav-messages-tab"
           >
-            {messagesClick ? <AdminMessages /> : <></>}
+            {activeTab === "messages" && <AdminMessages />}
           </div>
         </div>
       </div>
