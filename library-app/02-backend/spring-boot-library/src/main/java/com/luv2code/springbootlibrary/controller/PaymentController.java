@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin("https://localhost:5173")
 @RestController
-@RequestMapping("/api/payments/secure")
+@RequestMapping("/api/payment/secure")
 public class PaymentController {
 
     private PaymentService paymentService;
